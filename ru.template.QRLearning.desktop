@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+X-Nemo-Application-Type=silica-qt5
+Icon=ru.template.QRLearning
+Exec=/usr/bin/ru.template.QRLearning
+Name=Template
+Name[ru]=Шаблон
+
+[X-Application]
+Permissions=Sensors;SecureStorage;PushNotifications;DeviceInfo;Audio;Bluetooth;Camera;Internet;Location;MediaIndexing;NFC;RemovableMedia;UserDirs
+OrganizationName=ru.template
+ApplicationName=QRLearning
+ExecDBus=/usr/bin/ru.template.QRLearning
