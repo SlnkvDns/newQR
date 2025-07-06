@@ -9,4 +9,22 @@
         <translation>Template</translation>
     </message>
 </context>
+<context>
+    <name>QrScannerPage</name>
+    <message>
+        <location filename="../qml/pages/QrScannerPage.qml" line="27"/>
+        <source>Create a QR-code</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/QrScannerPage.qml" line="36"/>
+        <source>About</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/QrScannerPage.qml" line="124"/>
+        <source>Processing</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
 </TS>
