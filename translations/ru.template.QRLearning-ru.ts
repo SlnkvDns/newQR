@@ -12,23 +12,43 @@
 <context>
     <name>ProcessingPage</name>
     <message>
-        <location filename="../qml/pages/ProcessingPage.qml" line="32"/>
-        <source>QR Code Content</source>
+        <location filename="../qml/pages/ProcessingPage.qml" line="40"/>
+        <source>Информация о месте</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ProcessingPage.qml" line="39"/>
-        <source>Raw data:</source>
+        <location filename="../qml/pages/ProcessingPage.qml" line="47"/>
+        <source>Аудитория: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ProcessingPage.qml" line="54"/>
-        <source>Formatted JSON</source>
+        <location filename="../qml/pages/ProcessingPage.qml" line="56"/>
+        <source>Номер места: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ProcessingPage.qml" line="71"/>
-        <source>Back to Scan</source>
+        <location filename="../qml/pages/ProcessingPage.qml" line="64"/>
+        <source>Отметиться</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ProcessingPage.qml" line="81"/>
+        <source>Успешно сохранено!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ProcessingPage.qml" line="99"/>
+        <source>Сканировать еще</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ProcessingPage.qml" line="140"/>
+        <source>Ошибка при сохранении: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ProcessingPage.qml" line="141"/>
+        <source>неизвестная ошибка</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
