@@ -15,6 +15,7 @@ HEADERS +=
 
 DISTFILES += \
     qml/pages/LoginPage.qml \
+    qml/pages/ProcessingPage.qml \
     qml/pages/QrScannerPage.qml \
     qml/pages/RegisterPage.qml \
     rpm/ru.template.QRLearning.spec \

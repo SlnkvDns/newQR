@@ -19,24 +19,6 @@ Page {
         id: pageHeader
 
         headerText: appWindow.appName
-
-        AppBarSpacer {
-        }
-
-        AppBarButton {
-            context: qsTr("Create a QR-code")
-            icon.source: "image://theme/icon-m-add"
-            onClicked: pageStack.push(Qt.resolvedUrl("CreateQRCodePage.qml"))
-        }
-
-        AppBarSpacer {
-        }
-
-        AppBarButton {
-            context: qsTr("About")
-            icon.source: "image://theme/icon-m-about"
-            onClicked: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
-        }
     }
 
     QrFilter {

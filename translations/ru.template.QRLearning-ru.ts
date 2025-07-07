@@ -10,19 +10,32 @@
     </message>
 </context>
 <context>
+    <name>ProcessingPage</name>
+    <message>
+        <location filename="../qml/pages/ProcessingPage.qml" line="32"/>
+        <source>QR Code Content</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ProcessingPage.qml" line="39"/>
+        <source>Raw data:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ProcessingPage.qml" line="54"/>
+        <source>Formatted JSON</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ProcessingPage.qml" line="71"/>
+        <source>Back to Scan</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>QrScannerPage</name>
     <message>
-        <location filename="../qml/pages/QrScannerPage.qml" line="27"/>
-        <source>Create a QR-code</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/QrScannerPage.qml" line="36"/>
-        <source>About</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/QrScannerPage.qml" line="124"/>
+        <location filename="../qml/pages/QrScannerPage.qml" line="106"/>
         <source>Processing</source>
         <translation type="unfinished"></translation>
     </message>
