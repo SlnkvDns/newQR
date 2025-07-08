@@ -11,7 +11,7 @@ Page {
 
     onVisibleChanged: {
         if (visible) {
-            blackout.requestPaint(); // reload canvas
+            blackout.requestPaint();
         }
     }
 
