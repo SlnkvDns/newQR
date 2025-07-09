@@ -14,9 +14,9 @@ SOURCES += \
 HEADERS +=
 
 DISTFILES += \
+    qml/pages/CheckInPage.qml \
     qml/pages/LectorPage.qml \
     qml/pages/LoginPage.qml \
-    qml/pages/ProcessingPage.qml \
     qml/pages/QrScannerPage.qml \
     qml/pages/RegisterPage.qml \
     qml/pages/StudentPage.qml \

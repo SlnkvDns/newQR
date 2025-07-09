@@ -103,7 +103,7 @@ Page {
         id: shootButton
 
         objectName: "shootButton"
-        text: qsTr("Processing")
+        text: qsTr("Сканировать")
         anchors {
             left: parent.left
             right: parent.right
@@ -113,7 +113,7 @@ Page {
         enabled: qrFilter.result.length !== 0
 
         onClicked: {
-            pageStack.push(Qt.resolvedUrl("ProcessingPage.qml"), {
+            pageStack.push(Qt.resolvedUrl("CheckInPage.qml"), {
                     "qrCodeData": qrFilter.result
                 });
             qrFilter.clearResult();
