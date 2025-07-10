@@ -38,7 +38,7 @@ Page {
 
             Item { width: 1; height: Theme.paddingSmall * 1.5 }
 
-            // Кнопка выбора типа пользователя
+
             Rectangle {
                 width: parent.width * 0.6
                 height: 50
@@ -97,7 +97,7 @@ Page {
                 spacing: 40
                 anchors.horizontalCenter: parent.horizontalCenter
 
-                // Кнопка регистрации
+
                 Rectangle {
                     width: parent.width * 0.6
                     height: 64
@@ -178,12 +178,12 @@ Page {
 
         if (isTeacher) {
             data = {
-                "lector_name": username,
+                "lector_login": username,
                 "lector_password": password
             }
         } else {
             data = {
-                "student_name": username,
+                "student_login": username,
                 "student_password": password
             }
         }

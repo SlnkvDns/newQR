@@ -42,7 +42,6 @@ Page {
             anchors.horizontalCenter: parent.horizontalCenter
             padding: Theme.paddingLarge
 
-            // Ввод количества студентов
             Row {
                 spacing: Theme.paddingMedium
                 width: parent.width * 0.9
@@ -62,7 +61,7 @@ Page {
                 }
             }
 
-            // Кнопки друг под другом
+
             Column {
                 spacing: Theme.paddingMedium
                 width: parent.width * 0.6
@@ -125,7 +124,6 @@ Page {
                 }
             }
 
-            // Заголовок таблицы
             Row {
                 spacing: 2
                 width: parent.width * 0.95
@@ -144,7 +142,6 @@ Page {
                 }
             }
 
-            // Таблица студентов
             Repeater {
                 model: ListModel { id: studentsModel }
 

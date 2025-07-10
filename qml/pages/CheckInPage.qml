@@ -96,8 +96,8 @@ Page {
 
             Button {
                 anchors.horizontalCenter: parent.horizontalCenter
-                text: qsTr("Сканировать еще")
-                onClicked: pageStack.pop()
+                text: qsTr("На страницу студента")
+                onClicked: pageStack.push(Qt.resolvedUrl("StudentPage.qml"))
             }
         }
     }
@@ -120,7 +120,7 @@ Page {
             room: jsonData.room,
             desk: jsonData.desk,
             check_in_time: new Date().toISOString(),
-            user_id: "123456"
+            student_id: "123456"
         };
 
         var xhr = new XMLHttpRequest();

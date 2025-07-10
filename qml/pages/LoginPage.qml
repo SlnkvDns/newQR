@@ -150,7 +150,7 @@ Page {
 
     function loginUser() {
         var table = teacherSwitch.checked ? "lectors" : "students"
-        var nameColumn = teacherSwitch.checked ? "lector_name" : "student_name"
+        var nameColumn = teacherSwitch.checked ? "lector_login" : "student_login"
         var passwordColumn = teacherSwitch.checked ? "lector_password" : "student_password"
 
         var url = supabaseUrl + "/rest/v1/" + table +
@@ -173,7 +173,9 @@ Page {
                         if (teacherSwitch.checked) {
                             pageStack.push(Qt.resolvedUrl("LectorPage.qml"))
                         } else {
-                            pageStack.push(Qt.resolvedUrl("StudentPage.qml"))
+                            pageStack.push(Qt.resolvedUrl("QrScannerPage.qml"), {
+                                "studentLogin": usernameField.text
+                            })
                         }
                     } else {
                         errorLabel.text = qsTr("Неверные учетные данные")

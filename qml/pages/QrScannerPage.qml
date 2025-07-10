@@ -1,5 +1,3 @@
-// SPDX-FileCopyrightText: 2023 Open Mobile Platform LLC <community@omp.ru>
-// SPDX-License-Identifier: BSD-3-Clause
 import QtQuick 2.6
 import QtMultimedia 5.6
 import Sailfish.Silica 1.0
@@ -7,7 +5,10 @@ import Amber.QrFilter 1.0
 import Aurora.Controls 1.0
 
 Page {
+    id: recognitionPage
     objectName: "recognitionPage"
+
+    property string studentLogin: ""
 
     onVisibleChanged: {
         if (visible) {
@@ -15,29 +16,49 @@ Page {
         }
     }
 
-    AppBar {
-        id: pageHeader
+    Rectangle {
+        anchors.fill: parent
+        color: "#22333B"  // Фон страницы
+    }
 
-        headerText: appWindow.appName
+    // Верхняя панель
+    Rectangle {
+        id: header
+        width: parent.width + 40
+        height: Theme.itemSizeLarge
+        color: "#1F252A"
+
+        Text {
+            text: qsTr("Сканирование")
+            anchors.centerIn: parent
+            font.pixelSize: Theme.fontSizeLarge
+            color: "#ECF0F1"
+        }
     }
 
     QrFilter {
         id: qrFilter
-
         objectName: "qrFilter"
         active: true
+
+        onResultChanged: {
+            if (result && result.length > 0) {
+                pageStack.push(Qt.resolvedUrl("CheckInPage.qml"), {
+                    "qrCodeData": result.trim()
+                })
+                clearResult()
+            }
+        }
     }
 
     VideoOutput {
         id: viewer
-
         objectName: "viewer"
         anchors {
-            top: pageHeader.bottom
+            top: header.bottom
             left: parent.left
             right: parent.right
-            bottom: shootButton.top
-            bottomMargin: Theme.horizontalPageMargin
+            bottom: bottomMenu.top
         }
         fillMode: VideoOutput.PreserveAspectFit
         source: Camera {
@@ -53,39 +74,33 @@ Page {
     Rectangle {
         id: captureRect
         objectName: "captureRect"
-
         anchors.centerIn: viewer
         width: Math.min(viewer.width, viewer.height) * 0.7
         height: width
         color: "transparent"
 
         Component.onCompleted: {
-            frame.createObject(captureRect, {
-                    "x": 0,
-                    "y": 0
-                });
-            frame.createObject(captureRect, {
-                    "x": captureRect.width,
-                    "y": 0,
-                    "rotation": 90
-                });
-            frame.createObject(captureRect, {
-                    "x": captureRect.width,
-                    "y": captureRect.height,
-                    "rotation": 180
-                });
-            frame.createObject(captureRect, {
-                    "x": 0,
-                    "y": captureRect.height,
-                    "rotation": -90
-                });
+            frame.createObject(captureRect, { "x": 0, "y": 0 });
+            frame.createObject(captureRect, { "x": captureRect.width, "y": 0, "rotation": 90 });
+            frame.createObject(captureRect, { "x": captureRect.width, "y": captureRect.height, "rotation": 180 });
+            frame.createObject(captureRect, { "x": 0, "y": captureRect.height, "rotation": -90 });
         }
     }
+
+
+    Label {
+        text: qsTr("Отсканируйте QR-код на парте")
+        anchors.top: captureRect.bottom
+        anchors.topMargin: Theme.paddingMedium
+        anchors.horizontalCenter: parent.horizontalCenter
+        color: "#ECF0F1"
+        font.pixelSize: Theme.fontSizeMedium - 2
+    }
+
 
     Canvas {
         id: blackout
         objectName: "blackout"
-
         anchors.fill: parent
 
         onPaint: {
@@ -99,26 +114,70 @@ Page {
         }
     }
 
-    Button {
-        id: shootButton
 
-        objectName: "shootButton"
-        text: qsTr("Сканировать")
-        anchors {
-            left: parent.left
-            right: parent.right
-            bottom: parent.bottom
-            margins: Theme.horizontalPageMargin
+    Rectangle {
+        id: bottomMenu
+        width: parent.width
+        height: 140
+        color: "#1F252A"
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottom: parent.bottom
+
+        Rectangle {
+            id: circleBackground
+            width: 150
+            height: 150
+            radius: width / 2
+            color: "#1F252A"
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.bottom: parent.top
+            anchors.bottomMargin: -height / 1.5
         }
-        enabled: qrFilter.result.length !== 0
 
-        onClicked: {
-            pageStack.push(Qt.resolvedUrl("CheckInPage.qml"), {
-                    "qrCodeData": qrFilter.result
-                });
-            qrFilter.clearResult();
+        Rectangle {
+            id: qrCircle
+            width: 80
+            height: 80
+            radius: width / 2
+            color: "#1F252A"
+            border.color: "#3A4A52"
+            border.width: 2
+            anchors.centerIn: circleBackground
+
+            Image {
+                id: qrIcon
+                source: "../images/scan-code-qr.png"
+                width: 60
+                height: 60
+                anchors.centerIn: parent
+                fillMode: Image.PreserveAspectFit
+            }
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    qrFilter.clearResult()
+                }
+            }
         }
     }
+
+    // Кнопка для тестирования результата QR-кода
+    Button {
+        id: testButton
+        text: "Тест"
+        anchors.bottom: bottomMenu.top
+        anchors.right: parent.right
+        anchors.rightMargin: Theme.paddingLarge
+        anchors.bottomMargin: Theme.paddingMedium
+        onClicked: {
+            var fakeResult = JSON.stringify({ "room": "342", "desk": "42", "student_login": studentLogin });
+            pageStack.push(Qt.resolvedUrl("StudentPage.qml"), {
+                "qrCodeData": fakeResult.trim()
+            });
+        }
+    }
+
 
     Component {
         id: frame
@@ -127,28 +186,20 @@ Page {
             Rectangle {
                 id: verticalRect
                 objectName: "verticalRect"
-
-                anchors {
-                    top: parent.top
-                    left: parent.left
-                }
-
-                width: captureRect.width / 30
-                height: captureRect.height / 6
-                color: shootButton.enabled ? palette.primaryColor : Theme.rgba(Theme.secondaryColor, Theme.opacityLow)
+                anchors.top: parent.top
+                anchors.left: parent.left
+                width: captureRect.width / 50
+                height: captureRect.height / 10
+                color: palette.primaryColor
             }
 
             Rectangle {
                 objectName: "horizontalRect"
-
-                anchors {
-                    top: parent.top
-                    left: verticalRect.right
-                }
-
-                width: captureRect.width / 6 - verticalRect.width
-                height: captureRect.height / 30
-                color: shootButton.enabled ? palette.primaryColor : Theme.rgba(Theme.secondaryColor, Theme.opacityLow)
+                anchors.top: parent.top
+                anchors.left: verticalRect.right
+                width: captureRect.width / 10 - verticalRect.width
+                height: captureRect.height / 50
+                color: palette.primaryColor
             }
         }
     }
