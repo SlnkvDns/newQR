@@ -60,32 +60,32 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/LectorPage.qml" line="52"/>
+        <location filename="../qml/pages/LectorPage.qml" line="51"/>
         <source>Количество студентов:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/LectorPage.qml" line="79"/>
+        <location filename="../qml/pages/LectorPage.qml" line="78"/>
         <source>Подтвердить</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/LectorPage.qml" line="111"/>
+        <location filename="../qml/pages/LectorPage.qml" line="110"/>
         <source>Раздать варианты</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/LectorPage.qml" line="135"/>
+        <location filename="../qml/pages/LectorPage.qml" line="133"/>
         <source>Парта</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/LectorPage.qml" line="139"/>
+        <location filename="../qml/pages/LectorPage.qml" line="137"/>
         <source>Студент</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/LectorPage.qml" line="143"/>
+        <location filename="../qml/pages/LectorPage.qml" line="141"/>
         <source>Статус</source>
         <translation type="unfinished"></translation>
     </message>
@@ -207,42 +207,42 @@
 <context>
     <name>StudentPage</name>
     <message>
-        <location filename="../qml/pages/StudentPage.qml" line="27"/>
+        <location filename="../qml/pages/StudentPage.qml" line="26"/>
         <source>Подтверждение присутствия</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StudentPage.qml" line="51"/>
+        <location filename="../qml/pages/StudentPage.qml" line="49"/>
         <source>Аудитория: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StudentPage.qml" line="60"/>
+        <location filename="../qml/pages/StudentPage.qml" line="58"/>
         <source>Номер места: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StudentPage.qml" line="78"/>
+        <location filename="../qml/pages/StudentPage.qml" line="76"/>
         <source>Отметиться</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StudentPage.qml" line="106"/>
+        <location filename="../qml/pages/StudentPage.qml" line="104"/>
         <source>Успешно сохранено!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StudentPage.qml" line="120"/>
+        <location filename="../qml/pages/StudentPage.qml" line="117"/>
         <source>Вы сможете покинуть приложение после отметки</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StudentPage.qml" line="163"/>
+        <location filename="../qml/pages/StudentPage.qml" line="160"/>
         <source>Ошибка при сохранении: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StudentPage.qml" line="164"/>
+        <location filename="../qml/pages/StudentPage.qml" line="161"/>
         <source>неизвестная ошибка</source>
         <translation type="unfinished"></translation>
     </message>

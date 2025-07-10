@@ -18,10 +18,9 @@ Page {
 
     Rectangle {
         anchors.fill: parent
-        color: "#22333B"  // Фон страницы
+        color: "#22333B"
     }
 
-    // Верхняя панель
     Rectangle {
         id: header
         width: parent.width + 40
@@ -43,8 +42,8 @@ Page {
 
         onResultChanged: {
             if (result && result.length > 0) {
-                pageStack.push(Qt.resolvedUrl("CheckInPage.qml"), {
-                    "qrCodeData": result.trim()
+                pageStack.push(Qt.resolvedUrl("StudentPage.qml"), {
+                    "qrCodeData": result.trim(), "studentLogin": studentLogin
                 })
                 clearResult()
             }
@@ -171,9 +170,9 @@ Page {
         anchors.rightMargin: Theme.paddingLarge
         anchors.bottomMargin: Theme.paddingMedium
         onClicked: {
-            var fakeResult = JSON.stringify({ "room": "342", "desk": "42", "student_login": studentLogin });
+            var fakeResult = JSON.stringify({ "room": "342", "desk": "42" });
             pageStack.push(Qt.resolvedUrl("StudentPage.qml"), {
-                "qrCodeData": fakeResult.trim()
+                "qrCodeData": fakeResult.trim(), "studentLogin": studentLogin
             });
         }
     }

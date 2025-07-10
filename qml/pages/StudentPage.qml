@@ -4,6 +4,8 @@ import Sailfish.Silica 1.0
 Page {
     id: processingPage
     property string qrCodeData: ""
+    property string studentLogin: ""
+
 
     property string supabaseUrl: "https://rgxmzhkosapntoiwdomg.supabase.co"
     property string supabaseKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJneG16aGtvc2FwbnRvaXdkb21nIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTE3MTY3ODYsImV4cCI6MjA2NzI5Mjc4Nn0.ldRtDtg77-fqLk6n7ziXXI3RUEZ8GJm47yagBlzUyQw"
@@ -33,7 +35,7 @@ Page {
     Rectangle {
         id: cardRect
         width: parent.width * 0.9
-        height: 300
+        height: 400
         radius: 40
         color: "#8EA8C3"
         anchors.horizontalCenter: parent.horizontalCenter
@@ -140,7 +142,7 @@ Page {
             room: jsonData.room,
             desk: jsonData.desk,
             check_in_time: new Date().toISOString(),
-            student_login: jsonData.student_login
+            student_login: studentLogin
         };
 
         var xhr = new XMLHttpRequest();
