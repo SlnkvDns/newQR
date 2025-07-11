@@ -4,8 +4,8 @@ import Sailfish.Silica 1.0
 Page {
     id: loginPage
 
-    property string supabaseUrl: "https://rgxmzhkosapntoiwdomg.supabase.co"
-    property string supabaseKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJneG16aGtvc2FwbnRvaXdkb21nIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTE3MTY3ODYsImV4cCI6MjA2NzI5Mjc4Nn0.ldRtDtg77-fqLk6n7ziXXI3RUEZ8GJm47yagBlzUyQw"
+    property string supabaseUrl: "https://bunlbfktdfdtxuciapbo.supabase.co"
+    property string supabaseKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ1bmxiZmt0ZGZkdHh1Y2lhcGJvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTIyMTc0ODEsImV4cCI6MjA2Nzc5MzQ4MX0.TVfvRGNd0O5Qrzbwu2gnxYNCO0XZgdnPoj7fw88KTPs"
 
     Rectangle {
         anchors.fill: parent
@@ -149,42 +149,82 @@ Page {
     }
 
     function loginUser() {
-        var table = teacherSwitch.checked ? "lectors" : "students"
-        var nameColumn = teacherSwitch.checked ? "lector_login" : "student_login"
-        var passwordColumn = teacherSwitch.checked ? "lector_password" : "student_password"
+            var email = usernameField.text;
+            var password = passwordField.text;
+            var isTeacher = teacherSwitch.checked;
 
+            // Формируем запрос для аутентификации
+            var url = supabaseUrl + "/auth/v1/token?grant_type=password";
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", url);
+            xhr.setRequestHeader("apikey", supabaseKey);
+            xhr.setRequestHeader("Content-Type", "application/json");
+
+            var data = {
+                "email": email,
+                "password": password
+            };
+
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        var response = JSON.parse(xhr.responseText);
+                        var userId = response.user.id;
+
+                        // Проверяем роль пользователя
+                        checkUserRole(userId, isTeacher);
+                    } else {
+                        try {
+                            var errorResponse = JSON.parse(xhr.responseText);
+                            errorLabel.text = errorResponse.error_description || qsTr("Ошибка авторизации");
+                        } catch (e) {
+                            errorLabel.text = qsTr("Ошибка сервера: ") + xhr.status;
+                        }
+                    }
+                }
+            };
+            xhr.send(JSON.stringify(data));
+        }
+
+    function checkUserRole(userId, isTeacher) {
+        // Определяем таблицу и поле в зависимости от роли
+        var table = isTeacher ? "teachers" : "students";
+        var roleField = isTeacher ? "teacher_id" : "student_id";
+
+        // Проверяем наличие пользователя в соответствующей таблице
         var url = supabaseUrl + "/rest/v1/" + table +
-                  "?" + nameColumn + "=eq." + encodeURIComponent(usernameField.text) +
-                  "&" + passwordColumn + "=eq." + encodeURIComponent(passwordField.text) +
-                  "&select=*"
+                  "?" + roleField + "=eq." + userId +
+                  "&select=id";
 
-        var xhr = new XMLHttpRequest()
-        xhr.open("GET", url)
-        xhr.setRequestHeader("apikey", supabaseKey)
-        xhr.setRequestHeader("Authorization", "Bearer " + supabaseKey)
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", url);
+        xhr.setRequestHeader("apikey", supabaseKey);
+        xhr.setRequestHeader("Authorization", "Bearer " + supabaseKey);
 
         xhr.onreadystatechange = function() {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
-                    var response = JSON.parse(xhr.responseText)
+                    var response = JSON.parse(xhr.responseText);
+
                     if (response.length > 0) {
-                        var user = response[0]
-                        console.log("User logged in:", user)
-                        if (teacherSwitch.checked) {
-                            pageStack.push(Qt.resolvedUrl("LectorPage.qml"))
+                        if (isTeacher) {
+                            pageStack.push(Qt.resolvedUrl("LectorPage.qml"));
                         } else {
                             pageStack.push(Qt.resolvedUrl("QrScannerPage.qml"), {
                                 "studentLogin": usernameField.text
-                            })
+                            });
                         }
                     } else {
-                        errorLabel.text = qsTr("Неверные учетные данные")
+                        errorLabel.text = qsTr("Пользователь не найден в базе ") +
+                                         (isTeacher ? qsTr("преподавателей") : qsTr("студентов"));
                     }
                 } else {
-                    errorLabel.text = qsTr("Ошибка сервера: ") + xhr.status
+                    errorLabel.text = qsTr("Ошибка проверки роли: ") + xhr.status;
                 }
             }
-        }
-        xhr.send()
+        };
+        xhr.send();
     }
 }
+

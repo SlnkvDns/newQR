@@ -9,9 +9,11 @@ QT += core quick multimedia qml
 PKGCONFIG += \
 
 SOURCES += \
+    src/hasher.cpp \
     src/main.cpp \
 
-HEADERS +=
+HEADERS += \
+    src/hasher.h
 
 DISTFILES += \
     qml/pages/CheckInPage.qml \

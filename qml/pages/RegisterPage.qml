@@ -4,8 +4,8 @@ import Sailfish.Silica 1.0
 Page {
     id: registerPage
 
-    property string supabaseUrl: "https://rgxmzhkosapntoiwdomg.supabase.co"
-    property string supabaseKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJneG16aGtvc2FwbnRvaXdkb21nIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTE3MTY3ODYsImV4cCI6MjA2NzI5Mjc4Nn0.ldRtDtg77-fqLk6n7ziXXI3RUEZ8GJm47yagBlzUyQw"
+    property string supabaseUrl: "https://bunlbfktdfdtxuciapbo.supabase.co"
+    property string supabaseKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ1bmxiZmt0ZGZkdHh1Y2lhcGJvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTIyMTc0ODEsImV4cCI6MjA2Nzc5MzQ4MX0.TVfvRGNd0O5Qrzbwu2gnxYNCO0XZgdnPoj7fw88KTPs"
     property bool isTeacher: false
 
     property string username: ""
@@ -67,7 +67,7 @@ Page {
                 anchors.horizontalCenter: parent.horizontalCenter
 
                 TextField {
-                    id: usernameField
+                    id: emailField
                     width: parent.width * 0.8
                     placeholderText: qsTr("Имя пользователя")
                     color: "#ECF0F1"
@@ -165,58 +165,130 @@ Page {
     }
 
     function registerUser() {
-        busyIndicator.running = true
-        errorLabel.text = ""
+        var email = emailField.text;
+        var password = passwordField.text;
+        var role = isTeacher ? "teacher" : "student";
 
-        var table = isTeacher ? "lectors" : "students"
-        var url = supabaseUrl + "/rest/v1/" + table
+        // Показываем индикатор загрузки
+        busyIndicator.running = true;
+        errorLabel.text = "";
 
-        var data = {
-            "name": username,
-            "password": password
-        }
+        // Шаг 1: Регистрация пользователя в Supabase Auth
+        var authUrl = supabaseUrl + "/auth/v1/signup";
+        var authXhr = new XMLHttpRequest();
+        authXhr.open("POST", authUrl);
+        authXhr.setRequestHeader("apikey", supabaseKey);
+        authXhr.setRequestHeader("Content-Type", "application/json");
 
-        if (isTeacher) {
-            data = {
-                "lector_login": username,
-                "lector_password": password
+        var authData = {
+            "email": email,
+            "password": password,
+            "options": {
+                "data": {
+                    "role": role
+                }
             }
-        } else {
-            data = {
-                "student_login": username,
-                "student_password": password
-            }
-        }
+        };
 
-        var xhr = new XMLHttpRequest()
-        xhr.open("POST", url)
-        xhr.setRequestHeader("apikey", supabaseKey)
-        xhr.setRequestHeader("Authorization", "Bearer " + supabaseKey)
-        xhr.setRequestHeader("Content-Type", "application/json")
-        xhr.setRequestHeader("Prefer", "return=minimal")
+        authXhr.onreadystatechange = function() {
+            if (authXhr.readyState === XMLHttpRequest.DONE) {
+                if (authXhr.status === 200) {
+                    var authResponse = JSON.parse(authXhr.responseText);
 
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === XMLHttpRequest.DONE) {
-                busyIndicator.running = false
-
-                if (xhr.status === 201) {
-                    errorLabel.color = "green"
-                    errorLabel.text = qsTr("Регистрация успешна!")
-                    console.log("User registered:", username)
-
-                    pageStack.replace(Qt.resolvedUrl("LoginPage.qml"))
+                    // Шаг 2: Добавление в соответствующую таблицу
+                    addUserToRoleTable(email, role);
 
                 } else {
-                    errorLabel.color = "red"
-                    if (xhr.status === 409) {
-                        errorLabel.text = qsTr("Пользователь с таким именем уже существует")
-                    } else {
-                        errorLabel.text = qsTr("Ошибка регистрации: ") + xhr.status + " - " + xhr.responseText
+                    busyIndicator.running = false;
+                    try {
+                        var errorResponse = JSON.parse(authXhr.responseText);
+                        errorLabel.text = errorResponse.error_description || qsTr("Ошибка регистрации");
+                    } catch (e) {
+                        errorLabel.text = qsTr("Ошибка сервера: ") + authXhr.status;
                     }
                 }
             }
-        }
+        };
+        authXhr.send(JSON.stringify(authData));
+    }
 
-        xhr.send(JSON.stringify(data))
+    function addUserToRoleTable(email, role) {
+        var table = role === "teacher" ? "teachers" : "students";
+        var idField = role === "teacher" ? "teacher_id" : "student_id";
+        console.log("Table:", table)
+        console.log("ID Field:", idField)
+
+        var url = supabaseUrl + "/rest/v1/" + table;
+        console.log("URL:", url)
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", url);
+        xhr.setRequestHeader("apikey", supabaseKey);
+        xhr.setRequestHeader("Authorization", "Bearer " + supabaseKey);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.setRequestHeader("Prefer", "return=minimal");
+
+        var data = {
+            "email": email,
+        };
+
+        console.log("Request data:", JSON.stringify(data))
+
+        // Добавляем обработчики для всех состояний
+        xhr.onreadystatechange = function() {
+            console.log("ReadyState changed:", xhr.readyState)
+
+            if (xhr.readyState === XMLHttpRequest.HEADERS_RECEIVED) {
+                console.log("Headers received")
+            }
+            else if (xhr.readyState === XMLHttpRequest.LOADING) {
+                console.log("Loading response")
+            }
+            else if (xhr.readyState === XMLHttpRequest.DONE) {
+                console.log("Request DONE, status:", xhr.status)
+                busyIndicator.running = false;
+
+                if (xhr.status === 201) {
+                    console.log("Success! Response:", xhr.responseText)
+                    pageStack.pop();
+                } else {
+                    console.log("Error! Response:", xhr.responseText)
+                    try {
+                        var errorResponse = JSON.parse(xhr.responseText);
+                        errorLabel.text = qsTr("Ошибка при создании профиля: ") +
+                                         (errorResponse.message || xhr.status);
+                        deleteUser(userId);
+                    } catch (e) {
+                        errorLabel.text = qsTr("Ошибка сервера: ") + xhr.status;
+                    }
+                }
+            }
+        };
+
+        // Добавляем обработчики ошибок
+        xhr.onerror = function() {
+            console.log("Network error occurred")
+            busyIndicator.running = false;
+            errorLabel.text = qsTr("Сетевая ошибка");
+        };
+
+        xhr.ontimeout = function() {
+            console.log("Request timed out")
+            busyIndicator.running = false;
+            errorLabel.text = qsTr("Таймаут запроса");
+        };
+
+        console.log("Sending request...")
+        xhr.send(JSON.stringify(data));
+        console.log("Request sent")
+    }
+
+    function deleteUser(userId) {
+        var url = supabaseUrl + "/auth/v1/admin/users/" + userId;
+        var xhr = new XMLHttpRequest();
+        xhr.open("DELETE", url);
+        xhr.setRequestHeader("apikey", supabaseKey);
+        xhr.setRequestHeader("Authorization", "Bearer " + supabaseKey);
+        xhr.send();
     }
 }

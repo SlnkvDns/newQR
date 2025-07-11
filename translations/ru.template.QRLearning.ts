@@ -123,25 +123,45 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/LoginPage.qml" line="181"/>
-        <source>Неверные учетные данные</source>
+        <location filename="../qml/pages/LoginPage.qml" line="180"/>
+        <source>Ошибка авторизации</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/LoginPage.qml" line="184"/>
+        <location filename="../qml/pages/LoginPage.qml" line="182"/>
         <source>Ошибка сервера: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/LoginPage.qml" line="219"/>
+        <source>Пользователь не найден в базе </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/LoginPage.qml" line="220"/>
+        <source>преподавателей</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/LoginPage.qml" line="220"/>
+        <source>студентов</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/LoginPage.qml" line="223"/>
+        <source>Ошибка проверки роли: </source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>QrScannerPage</name>
     <message>
-        <location filename="../qml/pages/QrScannerPage.qml" line="32"/>
+        <location filename="../qml/pages/QrScannerPage.qml" line="31"/>
         <source>Сканирование</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/QrScannerPage.qml" line="92"/>
+        <location filename="../qml/pages/QrScannerPage.qml" line="91"/>
         <source>Отсканируйте QR-код на парте</source>
         <translation type="unfinished"></translation>
     </message>
@@ -189,60 +209,71 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/RegisterPage.qml" line="204"/>
-        <source>Регистрация успешна!</source>
+        <location filename="../qml/pages/RegisterPage.qml" line="206"/>
+        <source>Ошибка регистрации</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/RegisterPage.qml" line="212"/>
-        <source>Пользователь с таким именем уже существует</source>
+        <location filename="../qml/pages/RegisterPage.qml" line="208"/>
+        <location filename="../qml/pages/RegisterPage.qml" line="263"/>
+        <source>Ошибка сервера: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/RegisterPage.qml" line="214"/>
-        <source>Ошибка регистрации: </source>
+        <location filename="../qml/pages/RegisterPage.qml" line="259"/>
+        <source>Ошибка при создании профиля: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/RegisterPage.qml" line="273"/>
+        <source>Сетевая ошибка</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/RegisterPage.qml" line="279"/>
+        <source>Таймаут запроса</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>StudentPage</name>
     <message>
-        <location filename="../qml/pages/StudentPage.qml" line="26"/>
+        <location filename="../qml/pages/StudentPage.qml" line="28"/>
         <source>Подтверждение присутствия</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StudentPage.qml" line="49"/>
+        <location filename="../qml/pages/StudentPage.qml" line="51"/>
         <source>Аудитория: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StudentPage.qml" line="58"/>
+        <location filename="../qml/pages/StudentPage.qml" line="60"/>
         <source>Номер места: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StudentPage.qml" line="76"/>
+        <location filename="../qml/pages/StudentPage.qml" line="78"/>
         <source>Отметиться</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StudentPage.qml" line="104"/>
+        <location filename="../qml/pages/StudentPage.qml" line="106"/>
         <source>Успешно сохранено!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StudentPage.qml" line="117"/>
+        <location filename="../qml/pages/StudentPage.qml" line="119"/>
         <source>Вы сможете покинуть приложение после отметки</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StudentPage.qml" line="160"/>
+        <location filename="../qml/pages/StudentPage.qml" line="162"/>
         <source>Ошибка при сохранении: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StudentPage.qml" line="161"/>
+        <location filename="../qml/pages/StudentPage.qml" line="163"/>
         <source>неизвестная ошибка</source>
         <translation type="unfinished"></translation>
     </message>
