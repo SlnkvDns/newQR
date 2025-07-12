@@ -69,7 +69,7 @@ Page {
                 TextField {
                     id: emailField
                     width: parent.width * 0.8
-                    placeholderText: qsTr("Имя пользователя")
+                    placeholderText: qsTr("Email")
                     color: "#ECF0F1"
                     font.pixelSize: Theme.fontSizeMedium
                     horizontalAlignment: Text.AlignLeft
