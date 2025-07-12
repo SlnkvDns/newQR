@@ -169,11 +169,9 @@ Page {
         var password = passwordField.text;
         var role = isTeacher ? "teacher" : "student";
 
-        // Показываем индикатор загрузки
         busyIndicator.running = true;
         errorLabel.text = "";
 
-        // Шаг 1: Регистрация пользователя в Supabase Auth
         var authUrl = supabaseUrl + "/auth/v1/signup";
         var authXhr = new XMLHttpRequest();
         authXhr.open("POST", authUrl);
@@ -192,10 +190,9 @@ Page {
 
         authXhr.onreadystatechange = function() {
             if (authXhr.readyState === XMLHttpRequest.DONE) {
-                if (authXhr.status === 200) {
+                if (authXhr.status === 201) {
                     var authResponse = JSON.parse(authXhr.responseText);
 
-                    // Шаг 2: Добавление в соответствующую таблицу
                     addUserToRoleTable(email, role);
 
                 } else {
@@ -234,7 +231,6 @@ Page {
 
         console.log("Request data:", JSON.stringify(data))
 
-        // Добавляем обработчики для всех состояний
         xhr.onreadystatechange = function() {
             console.log("ReadyState changed:", xhr.readyState)
 
@@ -265,7 +261,6 @@ Page {
             }
         };
 
-        // Добавляем обработчики ошибок
         xhr.onerror = function() {
             console.log("Network error occurred")
             busyIndicator.running = false;

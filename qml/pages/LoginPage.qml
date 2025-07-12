@@ -153,7 +153,6 @@ Page {
             var password = passwordField.text;
             var isTeacher = teacherSwitch.checked;
 
-            // Формируем запрос для аутентификации
             var url = supabaseUrl + "/auth/v1/token?grant_type=password";
 
             var xhr = new XMLHttpRequest();
@@ -170,10 +169,8 @@ Page {
                 if (xhr.readyState === XMLHttpRequest.DONE) {
                     if (xhr.status === 200) {
                         var response = JSON.parse(xhr.responseText);
-                        var userId = response.user.id;
 
-                        // Проверяем роль пользователя
-                        checkUserRole(userId, isTeacher);
+                        checkUserRole(email, isTeacher);
                     } else {
                         try {
                             var errorResponse = JSON.parse(xhr.responseText);
@@ -187,15 +184,11 @@ Page {
             xhr.send(JSON.stringify(data));
         }
 
-    function checkUserRole(userId, isTeacher) {
-        // Определяем таблицу и поле в зависимости от роли
-        var table = isTeacher ? "teachers" : "students";
-        var roleField = isTeacher ? "teacher_id" : "student_id";
+    function checkUserRole(userEmail, isTeacher) {
 
-        // Проверяем наличие пользователя в соответствующей таблице
-        var url = supabaseUrl + "/rest/v1/" + table +
-                  "?" + roleField + "=eq." + userId +
-                  "&select=id";
+        var table = isTeacher ? "teachers" : "students";
+
+        var url = supabaseUrl + "/rest/v1/" + table + "?" + "email" + "=eq." + encodeURIComponent(userEmail);
 
         var xhr = new XMLHttpRequest();
         xhr.open("GET", url);

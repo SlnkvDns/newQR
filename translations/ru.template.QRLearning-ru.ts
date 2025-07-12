@@ -209,28 +209,28 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/RegisterPage.qml" line="206"/>
+        <location filename="../qml/pages/RegisterPage.qml" line="205"/>
         <source>Ошибка регистрации</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/RegisterPage.qml" line="208"/>
-        <location filename="../qml/pages/RegisterPage.qml" line="263"/>
+        <location filename="../qml/pages/RegisterPage.qml" line="207"/>
+        <location filename="../qml/pages/RegisterPage.qml" line="262"/>
         <source>Ошибка сервера: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/RegisterPage.qml" line="259"/>
+        <location filename="../qml/pages/RegisterPage.qml" line="258"/>
         <source>Ошибка при создании профиля: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/RegisterPage.qml" line="273"/>
+        <location filename="../qml/pages/RegisterPage.qml" line="272"/>
         <source>Сетевая ошибка</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/RegisterPage.qml" line="279"/>
+        <location filename="../qml/pages/RegisterPage.qml" line="278"/>
         <source>Таймаут запроса</source>
         <translation type="unfinished"></translation>
     </message>
