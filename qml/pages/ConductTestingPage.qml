@@ -120,7 +120,7 @@ Page {
             Rectangle {
                 width: parent.width
                 height: Theme.itemSizeMedium
-                radius: height / 2  // Закругление равное половине высоты
+                radius: height / 2
                 color: pressed ? "#3A4A52" : "#2A3A42"
                 border.color: "#3A4A52"
                 border.width: 1
