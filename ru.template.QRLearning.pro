@@ -4,16 +4,20 @@ CONFIG += qzxing_multimedia\
           qzxing_qml\
           auroraapp\
 
-QT += core quick multimedia qml
+QT += core quick multimedia qml network
 
 PKGCONFIG += \
 
 SOURCES += \
     src/hasher.cpp \
     src/main.cpp \
+    variantdb.cpp \
+    variantdistributor.cpp
 
 HEADERS += \
-    src/hasher.h
+    src/hasher.h \
+    variantdb.h \
+    variantdistributor.h
 
 DISTFILES += \
     qml/pages/CheckInPage.qml \
@@ -22,6 +26,7 @@ DISTFILES += \
     qml/pages/QrScannerPage.qml \
     qml/pages/RegisterPage.qml \
     qml/pages/StudentPage.qml \
+    qml/pages/VariantTestPage.qml \
     rpm/ru.template.QRLearning.spec \
 
 AURORAAPP_ICONS = 86x86 108x108 128x128 172x172
