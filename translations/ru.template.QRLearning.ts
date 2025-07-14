@@ -94,7 +94,7 @@
     <name>LoginPage</name>
     <message>
         <location filename="../qml/pages/LoginPage.qml" line="57"/>
-        <source>Имя пользователя</source>
+        <source>Email</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -123,32 +123,32 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/LoginPage.qml" line="180"/>
+        <location filename="../qml/pages/LoginPage.qml" line="177"/>
         <source>Ошибка авторизации</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/LoginPage.qml" line="182"/>
+        <location filename="../qml/pages/LoginPage.qml" line="179"/>
         <source>Ошибка сервера: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/LoginPage.qml" line="219"/>
+        <location filename="../qml/pages/LoginPage.qml" line="212"/>
         <source>Пользователь не найден в базе </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/LoginPage.qml" line="220"/>
+        <location filename="../qml/pages/LoginPage.qml" line="213"/>
         <source>преподавателей</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/LoginPage.qml" line="220"/>
+        <location filename="../qml/pages/LoginPage.qml" line="213"/>
         <source>студентов</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/LoginPage.qml" line="223"/>
+        <location filename="../qml/pages/LoginPage.qml" line="216"/>
         <source>Ошибка проверки роли: </source>
         <translation type="unfinished"></translation>
     </message>
@@ -185,7 +185,7 @@
     </message>
     <message>
         <location filename="../qml/pages/RegisterPage.qml" line="72"/>
-        <source>Имя пользователя</source>
+        <source>Email</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -209,28 +209,28 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/RegisterPage.qml" line="205"/>
+        <location filename="../qml/pages/RegisterPage.qml" line="202"/>
         <source>Ошибка регистрации</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/RegisterPage.qml" line="207"/>
-        <location filename="../qml/pages/RegisterPage.qml" line="262"/>
+        <location filename="../qml/pages/RegisterPage.qml" line="204"/>
+        <location filename="../qml/pages/RegisterPage.qml" line="258"/>
         <source>Ошибка сервера: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/RegisterPage.qml" line="258"/>
+        <location filename="../qml/pages/RegisterPage.qml" line="254"/>
         <source>Ошибка при создании профиля: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/RegisterPage.qml" line="272"/>
+        <location filename="../qml/pages/RegisterPage.qml" line="267"/>
         <source>Сетевая ошибка</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/RegisterPage.qml" line="278"/>
+        <location filename="../qml/pages/RegisterPage.qml" line="273"/>
         <source>Таймаут запроса</source>
         <translation type="unfinished"></translation>
     </message>

@@ -26,8 +26,6 @@ BuildRequires:  pkgconfig(Qt5Quick)
 %make_install
 
 %files
-%{_includedir}/QZXing.h
-%{_includedir}/QZXing_global.h
 %defattr(-,root,root,-)
 %{_bindir}/%{name}
 %defattr(644,root,root,-)

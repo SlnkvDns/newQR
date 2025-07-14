@@ -1,19 +1,15 @@
 TARGET = ru.template.QRLearning
 
-CONFIG += qzxing_multimedia\
-          qzxing_qml\
-          auroraapp\
+CONFIG += auroraapp\
 
 QT += core quick multimedia qml
 
 PKGCONFIG += \
 
 SOURCES += \
-    src/hasher.cpp \
     src/main.cpp \
 
-HEADERS += \
-    src/hasher.h
+HEADERS +=
 
 DISTFILES += \
     qml/pages/CheckInPage.qml \
@@ -32,6 +28,5 @@ TRANSLATIONS += \
     translations/ru.template.QRLearning.ts \
     translations/ru.template.QRLearning-ru.ts \
 
-CONFIG += enable_dDEFINES += ENABLE_QZXING_QMLecoder_qr_code
+CONFIG += enable_dDEFINES
 
-include(QZXing/QZXing.pri)
