@@ -2,6 +2,54 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="en">
 <context>
+    <name>AttendancePage</name>
+    <message>
+        <location filename="../qml/pages/AttendancePage.qml" line="53"/>
+        <source>Обновить данные</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AttendancePage.qml" line="60"/>
+        <source>Показать всех</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AttendancePage.qml" line="60"/>
+        <source>Только присутствующие</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AttendancePage.qml" line="64"/>
+        <source>Сохранить изменения</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AttendancePage.qml" line="76"/>
+        <source>Табель посещаемости</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AttendancePage.qml" line="114"/>
+        <source>ФИО</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AttendancePage.qml" line="121"/>
+        <source>Статус</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AttendancePage.qml" line="130"/>
+        <source>Парта</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AttendancePage.qml" line="191"/>
+        <source>Нет данных о студентах</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>CheckInPage</name>
     <message>
         <location filename="../qml/pages/CheckInPage.qml" line="40"/>
@@ -65,27 +113,27 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/LectorPage.qml" line="78"/>
+        <location filename="../qml/pages/LectorPage.qml" line="83"/>
         <source>Подтвердить</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/LectorPage.qml" line="110"/>
+        <location filename="../qml/pages/LectorPage.qml" line="115"/>
         <source>Раздать варианты</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/LectorPage.qml" line="133"/>
+        <location filename="../qml/pages/LectorPage.qml" line="138"/>
         <source>Парта</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/LectorPage.qml" line="137"/>
+        <location filename="../qml/pages/LectorPage.qml" line="142"/>
         <source>Студент</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/LectorPage.qml" line="141"/>
+        <location filename="../qml/pages/LectorPage.qml" line="146"/>
         <source>Статус</source>
         <translation type="unfinished"></translation>
     </message>

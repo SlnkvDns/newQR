@@ -7,10 +7,6 @@ Page {
 
     property int studentCount: 0
 
-    Rectangle {
-        anchors.fill: parent
-        color: "#22333B"
-    }
 
     Rectangle {
         width: parent.width
@@ -62,10 +58,35 @@ Page {
             }
 
 
+
+
             Column {
                 spacing: Theme.paddingMedium
                 width: parent.width * 0.6
                 anchors.horizontalCenter: parent.horizontalCenter
+
+                Rectangle {
+                    width: parent.width
+                    height: 50
+                    radius: 25
+                    color: "#b8d8eb"
+
+                    Text {
+                        anchors.centerIn: parent
+                        text: qsTr("Табель посещаемости")
+                        color: "#2C3E50"
+                        font.pixelSize: Theme.fontSizeMedium
+                        font.bold: true
+                    }
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            pageStack.push(Qt.resolvedUrl("AttendancePage.qml"))
+                        }
+                    }
+                }
+
 
                 Rectangle {
                     width: parent.width
