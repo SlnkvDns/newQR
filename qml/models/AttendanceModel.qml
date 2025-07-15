@@ -124,7 +124,6 @@ QtObject {
 
 
         }
-        console.log("[Supabase] Изменения для отправки:",JSON.stringify(changes, null, 2));
         supabaseClient.updateStudentsInfo(changes, delete_students)
     }
 }
